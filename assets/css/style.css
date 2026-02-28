@@ -1,10 +1,12 @@
-
 /* --- 1. Variables (Modern Tech Palette) --- */
 :root {
     /* This template uses a professional "Modern Tech" color scheme. */
-    --primary-color: #1A2A4C;   /* Midnight Blue */
-    --secondary-color: #3D5A80; /* Slate Blue */
-    --accent-color: #29B6F6;    /* Vivid Sky Blue */
+    --primary-color: #1A2A4C;
+    /* Midnight Blue */
+    --secondary-color: #3D5A80;
+    /* Slate Blue */
+    --accent-color: #29B6F6;
+    /* Vivid Sky Blue */
 
     /* --- Shared Variables (These usually don't need to change) --- */
     --light-bg-color: #F8F9FA;
@@ -12,7 +14,7 @@
     --dark-text-color: #343A40;
     --light-text-color: #6c757d;
     --card-bg-color: #ffffff;
-    
+
     /* Fonts */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
@@ -98,7 +100,8 @@ header p {
 
 /* --- 4. Navigation --- */
 nav {
-    background-color: rgba(26, 42, 76, 0.95); /* Adjusted for new primary color */
+    background-color: rgba(26, 42, 76, 0.95);
+    /* Adjusted for new primary color */
     backdrop-filter: blur(5px);
     position: sticky;
     top: 0;
@@ -279,7 +282,7 @@ nav ul li a:hover::after {
 }
 
 
-/* --- 6. Tabular Skills Section --- */
+/* --- 6. Enhanced Skills Section --- */
 #skills .container {
     max-width: 1100px;
 }
@@ -287,39 +290,51 @@ nav ul li a:hover::after {
 .skills-table {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 25px;
     margin-top: 50px;
-    background-color: var(--card-bg-color);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
 }
 
 .skill-column {
-    padding: 0 20px;
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 35px 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--accent-color);
 }
 
-.skill-column:not(:last-child) {
-    border-right: 1px solid #e9ecef;
+.skill-column:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
 .skill-header {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .skill-header i {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
-    margin-right: 15px;
-    width: 40px;
+    margin-right: 14px;
+    background: rgba(41, 182, 246, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .skill-header h3 {
     font-family: var(--font-heading);
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
+    line-height: 1.2;
 }
 
 .skill-list {
@@ -328,26 +343,104 @@ nav ul li a:hover::after {
 }
 
 .skill-list li {
-    padding: 12px 0;
-    font-size: 1.05rem;
-    color: var(--dark-text-color);
-    border-bottom: 1px solid #f1f3f5;
-    position: relative;
-    padding-left: 25px;
-}
-
-.skill-list li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    top: 12px;
-    color: var(--accent-color);
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.skill-list li:last-child {
+    padding: 10px 0;
     border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+    letter-spacing: 0.2px;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 7px;
+    background: #e9ecef;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 99px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* --- 6.1 Certifications Sub-Section --- */
+.certifications {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.certifications h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.certifications h3 i {
+    color: var(--accent-color);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.cert-card {
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 28px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--accent-color);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateX(5px);
+}
+
+.cert-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.cert-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cert-card strong {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.cert-card span {
+    font-size: 0.88rem;
+    color: var(--light-text-color);
 }
 
 /* --- 7. Contact Form --- */
@@ -391,7 +484,8 @@ nav ul li a:hover::after {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.25); /* Adjusted for new accent color */
+    box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.25);
+    /* Adjusted for new accent color */
 }
 
 .contact-form button.btn {
@@ -422,38 +516,52 @@ footer p {
     .skills-table {
         grid-template-columns: 1fr 1fr;
     }
-    .skill-column:nth-child(2) {
-        border-right: none;
-    }
 }
 
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.8rem;
     }
-    
+
     .about-content {
         flex-direction: column;
         text-align: center;
     }
 
     #projects .container {
-        padding: 0 5px; 
+        padding: 0 5px;
     }
 
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .skills-table {
         grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 40px;
+        gap: 20px;
     }
 
-    .skill-column:not(:last-child) {
-        border-right: none;
-        border-bottom: 1px solid #e9ecef;
-        padding-bottom: 30px;
+    .cert-grid {
+        grid-template-columns: 1fr;
     }
+}
+
+/* --- 10. Project Tags --- */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: rgba(41, 182, 246, 0.1);
+    color: var(--secondary-color);
+    border: 1px solid rgba(41, 182, 246, 0.3);
+    border-radius: 99px;
+    padding: 4px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }

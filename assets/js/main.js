@@ -50,3 +50,28 @@ function embedPowerBIDashboard() {
 
 // Initialize any additional components
 document.addEventListener('DOMContentLoaded', embedPowerBIDashboard);
+
+// Animate skill progress bars when they scroll into view
+document.addEventListener('DOMContentLoaded', function () {
+    const skillFills = document.querySelectorAll('.skill-fill');
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const fill = entry.target;
+                const targetWidth = fill.style.width;
+                fill.style.width = '0';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        fill.style.width = targetWidth;
+                    });
+                });
+                observer.unobserve(fill);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    skillFills.forEach(function (fill) {
+        observer.observe(fill);
+    });
+});
